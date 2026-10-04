@@ -1,0 +1,322 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  --primary: #8B6F47;
+  --dark: #17130F;
+  --secondary-dark: #241D16;
+  --cream: #F8F4EC;
+  --warm-white: #FFFDF8;
+  --gold: #C9A45C;
+  --light-gold: #E4C98A;
+  --text: #2E2924;
+  --muted: #776F65;
+  --border: #DED5C7;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-luxury: 0 16px 40px -10px rgba(23, 19, 15, 0.12);
+  --shadow-elevated: 0 24px 50px -12px rgba(23, 19, 15, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.luxury-body {
+  font-family: var(--font-sans);
+  background-color: var(--warm-white);
+  color: var(--text);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: var(--font-serif);
+  color: var(--dark);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+/* Luxury Section Titles */
+.luxury-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.luxury-subtitle::before,
+.luxury-subtitle::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--gold);
+}
+
+/* Luxury Buttons */
+.btn-gold {
+  background-color: var(--gold);
+  color: var(--dark);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.8rem;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(201, 164, 92, 0.25);
+}
+
+.btn-gold:hover {
+  background-color: var(--light-gold);
+  border-color: var(--light-gold);
+  color: var(--dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201, 164, 92, 0.35);
+}
+
+.btn-gold:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-outline-gold {
+  background-color: transparent;
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.8rem;
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--gold);
+  color: var(--dark);
+  transform: translateY(-2px);
+}
+
+.btn-dark-luxury {
+  background-color: var(--dark);
+  color: var(--warm-white);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.8rem;
+  border: 1px solid var(--dark);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-dark-luxury:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--warm-white);
+  transform: translateY(-2px);
+}
+
+.btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+/* Floating Booking Panel */
+.luxury-booking-widget {
+  background-color: var(--dark);
+  border: 1px solid rgba(201, 164, 92, 0.3);
+  box-shadow: var(--shadow-elevated);
+  padding: 1.5rem;
+  border-radius: 4px;
+  position: relative;
+  z-index: 20;
+}
+
+.luxury-input-group {
+  border-bottom: 1px solid rgba(222, 213, 199, 0.2);
+  padding-bottom: 0.5rem;
+  transition: var(--transition-smooth);
+}
+
+.luxury-input-group:focus-within {
+  border-color: var(--gold);
+}
+
+.luxury-input-group label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.luxury-input-group input,
+.luxury-input-group select {
+  background: transparent;
+  border: none;
+  color: var(--warm-white);
+  font-size: 0.95rem;
+  font-weight: 500;
+  width: 100%;
+  padding: 0;
+  outline: none;
+}
+
+.luxury-input-group select option {
+  background-color: var(--secondary-dark);
+  color: var(--warm-white);
+}
+
+/* Custom Card Luxury Effects */
+.luxury-card {
+  background-color: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.luxury-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-luxury);
+}
+
+.luxury-card-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.luxury-card-img-wrap img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card:hover .luxury-card-img-wrap img {
+  transform: scale(1.06);
+}
+
+/* Underline link animation */
+.luxury-link {
+  position: relative;
+  display: inline-block;
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.luxury-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.luxury-link:hover::after {
+  width: 100%;
+}
+
+/* Navbar */
+.luxury-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+  padding: 1.5rem 0;
+}
+
+.luxury-navbar.scrolled {
+  background-color: rgba(23, 19, 15, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.85rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(201, 164, 92, 0.2);
+}
+
+.luxury-nav-link {
+  color: var(--warm-white);
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+.luxury-nav-link:hover,
+.luxury-nav-link.active {
+  color: var(--gold);
+}
+
+.luxury-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 1px;
+  background-color: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.luxury-nav-link:hover::after,
+.luxury-nav-link.active::after {
+  width: 60%;
+}
