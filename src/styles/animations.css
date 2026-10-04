@@ -1,11 +1,11 @@
-/* Luxury Animation System */
+/* Luxury Animation System & Scroll Reveals */
 
 @keyframes heroSlowZoom {
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.06);
   }
   100% {
     transform: scale(1);
@@ -24,7 +24,7 @@
 @keyframes fadeUp {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(32px);
   }
   100% {
     opacity: 1;
@@ -44,7 +44,7 @@
 @keyframes fadeDown {
   0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-24px);
   }
   100% {
     opacity: 1;
@@ -52,10 +52,32 @@
   }
 }
 
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes scaleIn {
   0% {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.94);
   }
   100% {
     opacity: 1;
@@ -63,17 +85,35 @@
   }
 }
 
-@keyframes goldShimmer {
+@keyframes slideDownMenu {
   0% {
-    background-position: -200% 0;
+    opacity: 0;
+    transform: translateY(-12px);
   }
   100% {
-    background-position: 200% 0;
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Page Transition */
+.page-transition {
+  animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hero Zoom */
 .anim-hero-zoom {
-  animation: heroSlowZoom 25s ease-in-out infinite;
+  animation: heroSlowZoom 28s ease-in-out infinite alternate;
+  will-change: transform;
 }
 
 .anim-fade-up {
@@ -88,12 +128,49 @@
   animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.anim-slide-menu {
+  animation: slideDownMenu 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
 .delay-600 { animation-delay: 0.6s; }
+
+/* Scroll-Reveal Base States (Intersection Observer) */
+.reveal-init {
+  opacity: 0;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up.reveal-init {
+  transform: translateY(35px);
+}
+
+.reveal-left.reveal-init {
+  transform: translateX(-35px);
+}
+
+.reveal-right.reveal-init {
+  transform: translateX(35px);
+}
+
+.reveal-scale.reveal-init {
+  transform: scale(0.94);
+}
+
+.reveal-fade.reveal-init {
+  transform: none;
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
 
 /* Initial Loader Screen */
 .luxury-loader {
@@ -127,32 +204,41 @@
   height: 100%;
   width: 0%;
   background-color: #C9A45C;
-  animation: lineExpand 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: lineExpand 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 /* Lightbox Modal */
 .luxury-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(23, 19, 15, 0.88);
-  backdrop-filter: blur(8px);
+  background-color: rgba(23, 19, 15, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.35s ease;
 }
 
 .luxury-modal-content {
   background-color: #17130F;
-  border: 1px solid rgba(201, 164, 92, 0.35);
+  border: 1px solid rgba(201, 164, 92, 0.4);
   border-radius: 4px;
   color: #FFFDF8;
   max-width: 600px;
   width: 100%;
   padding: 2.5rem;
   position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 575.98px) {
+  .luxury-modal-content {
+    padding: 1.5rem 1.25rem;
+  }
 }

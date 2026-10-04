@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SectionTitle } from '../components/SectionTitle';
 import { GalleryCard } from '../components/GalleryCard';
 import { Modal } from '../components/Modal';
+import { AnimatedSection } from '../components/AnimatedSection';
 import { GALLERY_ITEMS } from '../data/offers';
 
 export const Gallery = () => {
@@ -22,43 +23,47 @@ export const Gallery = () => {
     : GALLERY_ITEMS.filter((item) => item.category === activeCategory);
 
   return (
-    <div style={{ backgroundColor: 'var(--warm-white)', minHeight: '100vh', paddingTop: '7rem', paddingBottom: '6rem' }}>
+    <div className="page-transition" style={{ backgroundColor: 'var(--warm-white)', minHeight: '100vh', paddingTop: '7rem', paddingBottom: '6rem' }}>
       <div className="container">
-        <div className="text-center mb-5">
-          <SectionTitle
-            subtitle="VISUAL ARCHIVE"
-            title="Moments of Unrivaled Elegance"
-            description="Explore our palatial facade, crystal-lit lobbies, serene thermal waters, and Michelin-inspired culinary presentations."
-          />
+        <AnimatedSection animation="fadeUp">
+          <div className="text-center mb-5">
+            <SectionTitle
+              subtitle="VISUAL ARCHIVE"
+              title="Moments of Unrivaled Elegance"
+              description="Explore our palatial facade, crystal-lit lobbies, serene thermal waters, and Michelin-inspired culinary presentations."
+            />
 
-          {/* Category Tabs */}
-          <div className="d-flex flex-wrap justify-content-center gap-2 mt-4">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`py-1 px-3 border-0 text-uppercase ${
-                  activeCategory === cat.id ? 'btn-gold' : 'bg-transparent text-secondary'
-                }`}
-                style={{
-                  fontSize: '0.75rem',
-                  letterSpacing: '0.12em',
-                  fontWeight: '600',
-                  borderRadius: '2px',
-                  transition: 'var(--transition-smooth)'
-                }}
-              >
-                {cat.label}
-              </button>
-            ))}
+            {/* Category Tabs */}
+            <div className="d-flex flex-wrap justify-content-center gap-2 mt-4">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`py-1 px-3 border-0 text-uppercase ${
+                    activeCategory === cat.id ? 'btn-gold' : 'bg-transparent text-secondary'
+                  }`}
+                  style={{
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.12em',
+                    fontWeight: '600',
+                    borderRadius: '2px',
+                    transition: 'var(--transition-smooth)'
+                  }}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* Gallery Grid */}
         <div className="row g-3">
-          {filteredItems.map((item) => (
-            <div key={item.id} className="col-12 col-md-6 col-lg-4">
-              <GalleryCard item={item} onClick={(it) => setActiveModalItem(it)} />
+          {filteredItems.map((item, idx) => (
+            <div key={item.id} className="col-12 col-sm-6 col-lg-4">
+              <AnimatedSection animation="scaleIn" delay={idx * 60}>
+                <GalleryCard item={item} onClick={(it) => setActiveModalItem(it)} />
+              </AnimatedSection>
             </div>
           ))}
         </div>

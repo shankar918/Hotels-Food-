@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SectionTitle } from '../components/SectionTitle';
 import { FoodCard } from '../components/FoodCard';
+import { AnimatedSection } from '../components/AnimatedSection';
 import { FOOD_ITEMS } from '../data/foods';
-import { FaUtensils, FaCalendarAlt, FaGlassCheers, FaClock, FaAward, FaArrowRight } from 'react-icons/fa';
+import { FaUtensils, FaCalendarAlt, FaGlassCheers, FaClock, FaArrowRight } from 'react-icons/fa';
 
 export const Dining = ({ onAddToCart, cartItems }) => {
   const signatureDishes = FOOD_ITEMS.slice(0, 8);
@@ -36,7 +37,7 @@ export const Dining = ({ onAddToCart, cartItems }) => {
   ];
 
   return (
-    <div style={{ backgroundColor: 'var(--warm-white)', minHeight: '100vh', paddingTop: '6.5rem', paddingBottom: '6rem' }}>
+    <div className="page-transition" style={{ backgroundColor: 'var(--warm-white)', minHeight: '100vh', paddingTop: '6.5rem', paddingBottom: '6rem' }}>
       {/* Hero Banner */}
       <section
         className="py-5 position-relative text-center overflow-hidden"
@@ -48,85 +49,91 @@ export const Dining = ({ onAddToCart, cartItems }) => {
         }}
       >
         <div className="container position-relative z-2">
-          <div className="luxury-subtitle mb-2" style={{ color: 'var(--light-gold)' }}>
-            MICHELIN-CALIBRATED GASTRONOMY
-          </div>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--warm-white)', fontWeight: '600', marginBottom: '1.25rem' }}>
-            Exceptional Dining, <br />
-            <span style={{ fontStyle: 'italic', color: 'var(--light-gold)' }}>Thoughtfully Served</span>
-          </h1>
-          <p style={{ maxWidth: '640px', margin: '0 auto 2rem auto', color: '#D5CDC4', fontSize: '1rem', lineHeight: '1.8' }}>
-            From dawn till midnight, our culinary masters orchestrate unforgettable multi-course degustations, wood-fired hearth delicacies, and in-room feasts.
-          </p>
+          <AnimatedSection animation="fadeUp">
+            <div className="luxury-subtitle mb-2" style={{ color: 'var(--light-gold)' }}>
+              MICHELIN-CALIBRATED GASTRONOMY
+            </div>
+            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.2rem, 5vw, 4rem)', color: 'var(--warm-white)', fontWeight: '600', marginBottom: '1.25rem' }}>
+              Exceptional Dining, <br />
+              <span style={{ fontStyle: 'italic', color: 'var(--light-gold)' }}>Thoughtfully Served</span>
+            </h1>
+            <p style={{ maxWidth: '640px', margin: '0 auto 2rem auto', color: '#D5CDC4', fontSize: '1rem', lineHeight: '1.8' }}>
+              From dawn till midnight, our culinary masters orchestrate unforgettable multi-course degustations, wood-fired hearth delicacies, and in-room feasts.
+            </p>
 
-          <div className="d-flex flex-wrap justify-content-center gap-3">
-            <Link to="/table-reservation" className="btn-gold py-3 px-4">
-              <FaCalendarAlt className="me-2" /> Reserve a Table
-            </Link>
-            <Link to="/menu" className="btn-outline-gold py-3 px-4" style={{ color: '#FFFDF8', borderColor: 'rgba(255,255,255,0.4)' }}>
-              <FaUtensils className="me-2 text-gold" /> Explore Full Menu
-            </Link>
-            <Link to="/food-booking" className="btn-dark-luxury py-3 px-4" style={{ backgroundColor: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)' }}>
-              In-Room Food Order
-            </Link>
-          </div>
+            <div className="d-flex flex-wrap justify-content-center gap-3">
+              <Link to="/table-reservation" className="btn-gold py-3 px-4">
+                <FaCalendarAlt className="me-2" /> Reserve a Table
+              </Link>
+              <Link to="/menu" className="btn-outline-gold py-3 px-4" style={{ color: '#FFFDF8', borderColor: 'rgba(255,255,255,0.4)' }}>
+                <FaUtensils className="me-2 text-gold" /> Explore Full Menu
+              </Link>
+              <Link to="/food-booking" className="btn-dark-luxury py-3 px-4" style={{ backgroundColor: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.2)' }}>
+                In-Room Food Order
+              </Link>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Venues Grid */}
       <section className="py-5">
         <div className="container py-md-4">
-          <SectionTitle
-            subtitle="OUR DINING SPACES"
-            title="Three Distinct Gastronomic Salons"
-            description="Whether seeking candlelit intimacy, casual hearth-fired vibrancy, or private vintage tastings, VEXMO provides an unparalleled setting."
-          />
+          <AnimatedSection animation="fadeUp">
+            <SectionTitle
+              subtitle="OUR DINING SPACES"
+              title="Three Distinct Gastronomic Salons"
+              description="Whether seeking candlelit intimacy, casual hearth-fired vibrancy, or private vintage tastings, VEXMO provides an unparalleled setting."
+            />
+          </AnimatedSection>
 
           <div className="row g-4 mb-5">
             {venues.map((venue, idx) => (
               <div key={idx} className="col-12 col-lg-4">
-                <div className="luxury-card h-100 d-flex flex-column">
-                  <div className="luxury-card-img-wrap" style={{ height: '240px' }}>
-                    <img src={venue.image} alt={venue.title} />
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '1rem',
-                        left: '1rem',
-                        backgroundColor: 'rgba(23, 19, 15, 0.85)',
-                        border: '1px solid rgba(201, 164, 92, 0.35)',
-                        padding: '0.25rem 0.65rem',
-                        color: 'var(--gold)',
-                        fontSize: '0.65rem',
-                        letterSpacing: '0.15em',
-                        textTransform: 'uppercase',
-                        fontWeight: '600'
-                      }}
-                    >
-                      {venue.subtitle}
-                    </div>
-                  </div>
-
-                  <div className="p-4 d-flex flex-column flex-grow-1 justify-content-between">
-                    <div>
-                      <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>
-                        {venue.title}
-                      </h3>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: '1.7', marginBottom: '1.25rem' }}>
-                        {venue.description}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 border-top border-light">
-                      <div className="d-flex align-items-center gap-2 mb-1" style={{ fontSize: '0.78rem', color: 'var(--text)' }}>
-                        <FaClock style={{ color: 'var(--gold)' }} /> {venue.hours}
-                      </div>
-                      <div className="d-flex align-items-center gap-2" style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>
-                        <FaGlassCheers style={{ color: 'var(--gold)' }} /> Attire: {venue.dress}
+                <AnimatedSection animation="fadeUp" delay={idx * 120}>
+                  <div className="luxury-card h-100 d-flex flex-column">
+                    <div className="luxury-card-img-wrap" style={{ height: '240px' }}>
+                      <img src={venue.image} alt={venue.title} />
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: '1rem',
+                          left: '1rem',
+                          backgroundColor: 'rgba(23, 19, 15, 0.85)',
+                          border: '1px solid rgba(201, 164, 92, 0.35)',
+                          padding: '0.25rem 0.65rem',
+                          color: 'var(--gold)',
+                          fontSize: '0.65rem',
+                          letterSpacing: '0.15em',
+                          textTransform: 'uppercase',
+                          fontWeight: '600'
+                        }}
+                      >
+                        {venue.subtitle}
                       </div>
                     </div>
+
+                    <div className="p-4 d-flex flex-column flex-grow-1 justify-content-between">
+                      <div>
+                        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>
+                          {venue.title}
+                        </h3>
+                        <p style={{ fontSize: '0.85rem', color: 'var(--muted)', lineHeight: '1.7', marginBottom: '1.25rem' }}>
+                          {venue.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-top border-light">
+                        <div className="d-flex align-items-center gap-2 mb-1" style={{ fontSize: '0.78rem', color: 'var(--text)' }}>
+                          <FaClock style={{ color: 'var(--gold)' }} /> {venue.hours}
+                        </div>
+                        <div className="d-flex align-items-center gap-2" style={{ fontSize: '0.78rem', color: 'var(--muted)' }}>
+                          <FaGlassCheers style={{ color: 'var(--gold)' }} /> Attire: {venue.dress}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </AnimatedSection>
               </div>
             ))}
           </div>
@@ -136,26 +143,30 @@ export const Dining = ({ onAddToCart, cartItems }) => {
       {/* Signature Dishes Preview */}
       <section className="py-5" style={{ backgroundColor: 'var(--cream)' }}>
         <div className="container py-md-4">
-          <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5">
-            <div>
-              <div className="luxury-subtitle">CHEF RECOMMENDATIONS</div>
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '2.4rem', margin: 0, fontWeight: '600' }}>
-                Featured Signature Dishes
-              </h2>
+          <AnimatedSection animation="fadeUp">
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5">
+              <div>
+                <div className="luxury-subtitle">CHEF RECOMMENDATIONS</div>
+                <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2rem, 3.5vw, 2.4rem)', margin: 0, fontWeight: '600' }}>
+                  Featured Signature Dishes
+                </h2>
+              </div>
+              <Link to="/menu" className="luxury-link mt-3 mt-md-0">
+                View All 20 Dishes on Menu <FaArrowRight className="ms-1" />
+              </Link>
             </div>
-            <Link to="/menu" className="luxury-link mt-3 mt-md-0">
-              View All 20 Dishes on Menu <FaArrowRight className="ms-1" />
-            </Link>
-          </div>
+          </AnimatedSection>
 
           <div className="row g-4">
-            {signatureDishes.map((dish) => (
+            {signatureDishes.map((dish, idx) => (
               <div key={dish.id} className="col-12 col-md-6 col-lg-3">
-                <FoodCard
-                  food={dish}
-                  onAddToCart={onAddToCart}
-                  isInCart={cartItems?.some((i) => i.id === dish.id)}
-                />
+                <AnimatedSection animation="fadeUp" delay={idx * 60}>
+                  <FoodCard
+                    food={dish}
+                    onAddToCart={onAddToCart}
+                    isInCart={cartItems?.some((i) => i.id === dish.id)}
+                  />
+                </AnimatedSection>
               </div>
             ))}
           </div>

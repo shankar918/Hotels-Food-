@@ -2,5 +2,7 @@
   "name": "VEXMO | Luxury Food & Holographic Hospitality",
   "description": "Photorealistic 10-second vertical 9:16 hero cinematic experience and luxury hospitality booking for VEXMO, featuring holographic menu projection and ingredient explosions.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

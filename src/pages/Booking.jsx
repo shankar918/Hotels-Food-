@@ -117,9 +117,9 @@ export const Booking = () => {
               </div>
 
               {[
-                { num: 1, label: '01 SELECT ROOM' },
-                { num: 2, label: '02 GUEST DETAILS' },
-                { num: 3, label: '03 REVIEW & CONFIRM' }
+                { num: 1, label: '01 SELECT ROOM', shortLabel: 'ROOM' },
+                { num: 2, label: '02 GUEST DETAILS', shortLabel: 'GUESTS' },
+                { num: 3, label: '03 REVIEW & CONFIRM', shortLabel: 'CONFIRM' }
               ].map((s) => (
                 <div
                   key={s.num}
@@ -147,14 +147,16 @@ export const Booking = () => {
                     {step > s.num ? <FaCheck /> : s.num}
                   </div>
                   <span
+                    className="text-center"
                     style={{
                       fontSize: '0.7rem',
-                      letterSpacing: '0.12em',
+                      letterSpacing: '0.1em',
                       fontWeight: '600',
                       color: step >= s.num ? 'var(--dark)' : 'var(--muted)'
                     }}
                   >
-                    {s.label}
+                    <span className="d-none d-sm-inline">{s.label}</span>
+                    <span className="d-sm-none">{s.shortLabel}</span>
                   </span>
                 </div>
               ))}
